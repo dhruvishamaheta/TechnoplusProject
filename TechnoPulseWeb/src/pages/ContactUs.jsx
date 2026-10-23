@@ -1,8 +1,14 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2, AlertCircle, Sparkles } from 'lucide-react';
+import { getServiceById } from '../data/servicesData';
 import './ContactUs.css';
 
 export default function ContactUs() {
+  const [searchParams] = useSearchParams();
+  const serviceParam = searchParams.get('service');
+  const matchedService = serviceParam ? getServiceById(serviceParam) : null;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,6 +17,15 @@ export default function ContactUs() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (matchedService) {
+      setFormData((prev) => ({
+        ...prev,
+        message: prev.message || `Hi Technoplus team,\n\nI would like to inquire about your ${matchedService.title} services. Please get in touch with me to discuss our requirements.`
+      }));
+    }
+  }, [matchedService]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -119,6 +134,13 @@ export default function ContactUs() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-form">
+                {matchedService && (
+                  <div className="contact-service-selected-pill">
+                    <Sparkles size={14} className="service-pill-icon" />
+                    <span>Inquiring about: <strong>{matchedService.title}</strong></span>
+                  </div>
+                )}
+
                 {errorMessage && (
                   <div className="contact-alert-box contact-alert-error">
                     <AlertCircle size={18} className="contact-alert-icon" />
