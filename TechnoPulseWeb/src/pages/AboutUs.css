@@ -1,0 +1,255 @@
+/* AboutUs Page Styles */
+.about-page-wrap {
+  padding-top: 90px;
+  min-height: 100vh;
+}
+
+.about-hero-section {
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.about-hero-content {
+  max-width: 800px;
+}
+
+.about-hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.about-hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+}
+
+.about-hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Stats Section */
+.about-stats-section {
+  padding-bottom: 40px;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.about-stat-card {
+  padding: 24px 20px;
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.stat-detail {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Story Section */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.story-paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.story-checkmarks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+.check-icon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+/* Story Visual Card */
+.about-story-visual {
+  padding: 32px 28px;
+}
+
+.visual-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.visual-icon {
+  color: var(--accent-cyan);
+}
+
+.visual-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.tech-badge-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.tech-pill:hover {
+  background: rgba(0, 245, 212, 0.1);
+  border-color: var(--border-accent);
+  color: var(--accent-cyan);
+}
+
+/* Principles & Pillars */
+.section-header-center {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 48px auto;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.pillar-card {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 245, 212, 0.1);
+  border: 1px solid rgba(0, 245, 212, 0.25);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.pillar-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.pillar-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* CTA Section */
+.about-cta-card {
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px solid rgba(0, 245, 212, 0.2);
+  background: radial-gradient(circle at 50% 0%, rgba(0, 245, 212, 0.08) 0%, rgba(22, 28, 40, 0.6) 70%);
+}
+
+.cta-icon {
+  color: var(--accent-cyan);
+  margin-bottom: 16px;
+}
+
+.cta-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.cta-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 auto 28px auto;
+  line-height: 1.6;
+}
+
+.cta-button-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}

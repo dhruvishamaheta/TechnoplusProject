@@ -1,0 +1,324 @@
+/* Company Details Page External Stylesheet */
+.company-page-wrap {
+  padding-top: 90px;
+  min-height: 100vh;
+}
+
+.company-hero-section {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.company-hero-content {
+  max-width: 800px;
+}
+
+.company-main-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.company-description {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Metrics Grid */
+.company-metrics-section {
+  padding-bottom: 30px;
+}
+
+.company-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.company-metric-card {
+  padding: 24px 20px;
+  text-align: left;
+}
+
+.metric-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.metric-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Section Headers */
+.section-header-left {
+  max-width: 650px;
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Facts Card */
+.facts-card {
+  padding: 32px 28px;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.fact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.fact-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 245, 212, 0.1);
+  border: 1px solid rgba(0, 245, 212, 0.25);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fact-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.fact-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.fact-value {
+  font-size: 0.95rem;
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Mission & Vision */
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.mission-card,
+.vision-card {
+  padding: 32px 28px;
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.mission-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 245, 212, 0.1);
+  border: 1px solid rgba(0, 245, 212, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+}
+
+.vision-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+}
+
+.card-section-title {
+  font-size: 1.35rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.card-body-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Journey Timeline */
+.journey-section-title {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.journey-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 880px;
+}
+
+.journey-item-card {
+  display: flex;
+  gap: 24px;
+  padding: 24px 26px;
+  align-items: flex-start;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.journey-item-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(0, 245, 212, 0.3);
+}
+
+.journey-year-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.journey-year {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.journey-node-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  margin-top: 8px;
+}
+
+.journey-content-col {
+  flex: 1;
+}
+
+.journey-item-title {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.journey-item-desc {
+  font-size: 0.925rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Governance */
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.governance-card {
+  padding: 24px 22px;
+}
+
+.gov-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.gov-check-icon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.gov-title {
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.gov-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* CTA */
+.company-cta-card {
+  padding: 48px 32px;
+  text-align: center;
+  border: 1px solid rgba(0, 245, 212, 0.2);
+  background: radial-gradient(circle at 50% 0%, rgba(0, 245, 212, 0.08) 0%, rgba(22, 28, 40, 0.6) 80%);
+}
+
+.cta-heading {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.cta-subtext {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 auto 28px auto;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}

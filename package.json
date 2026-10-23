@@ -1,0 +1,11 @@
+{
+  "name": "technoplus-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "server": "node server/server.js",
+    "server:dev": "node --watch server/server.js",
+    "client": "npm --prefix TechnoPulseWeb run dev",
+    "build": "npm --prefix TechnoPulseWeb run build"
+  }
+}
