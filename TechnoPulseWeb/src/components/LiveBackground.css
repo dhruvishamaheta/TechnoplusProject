@@ -1,0 +1,68 @@
+/* Minimal, Calm Ambient Background */
+
+.live-bg-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(37, 99, 235, 0.06), transparent 28%),
+    radial-gradient(circle at 90% 82%, rgba(79, 70, 229, 0.05), transparent 30%),
+    var(--bg-body);
+}
+
+/* Subtle, soft ambient glows that breathe very gently */
+.minimal-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: opacity, transform;
+}
+
+.glow-top {
+  width: 650px;
+  height: 450px;
+  top: -160px;
+  left: 15%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.11) 0%, rgba(79, 70, 229, 0.06) 60%, transparent 80%);
+  animation: gentleBreathe 24s ease-in-out infinite alternate;
+}
+
+.glow-bottom {
+  width: 600px;
+  height: 450px;
+  bottom: 5%;
+  right: 10%;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(2, 132, 199, 0.05) 60%, transparent 80%);
+  animation: gentleBreathe 28s ease-in-out infinite alternate -12s;
+}
+
+@keyframes gentleBreathe {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+/* Very faint digital grid */
+.minimal-digital-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.8) 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0.8) 0%, transparent 85%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .minimal-ambient-glow {
+    animation: none;
+  }
+}

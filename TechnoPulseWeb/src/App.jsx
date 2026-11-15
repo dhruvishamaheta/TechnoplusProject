@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import LiveBackground from './components/LiveBackground';
+import LiveScrollProgress from './components/LiveScrollProgress';
 
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
@@ -21,6 +23,8 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      {/* Whole-page ambient interactive background */}
+      <LiveBackground />
       <div className="app-layout">
         <Navbar />
         <main className="main-content">
@@ -42,6 +46,8 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        {/* Floating scroll progress indicator */}
+        <LiveScrollProgress />
       </div>
     </Router>
   );

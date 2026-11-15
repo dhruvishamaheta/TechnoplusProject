@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="brand-link" aria-label="Technoplus Home" onClick={closeMenu}>
           <img
-            src="/technoplus-logo.png"
+            src="/technoplus-logo-light.png"
             alt="Technoplus Solutions"
             className="brand-logo"
           />

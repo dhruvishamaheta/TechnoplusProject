@@ -1,12 +1,12 @@
 /* AboutUs Page Styles */
 .about-page-wrap {
-  padding-top: 90px;
+  padding-top: 72px;
   min-height: 100vh;
 }
 
 .about-hero-section {
-  padding-top: 40px;
-  padding-bottom: 50px;
+  padding-top: 28px;
+  padding-bottom: 36px;
 }
 
 .about-hero-content {
@@ -18,7 +18,7 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 18px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .about-hero-desc {
@@ -63,7 +63,7 @@
 .stat-label {
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 6px;
 }
 
@@ -91,7 +91,7 @@
   font-size: clamp(1.8rem, 3vw, 2.3rem);
   font-weight: 700;
   margin-bottom: 16px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .story-paragraph {
@@ -113,7 +113,7 @@
   align-items: center;
   gap: 10px;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 .check-icon {
@@ -153,12 +153,12 @@
 .tech-pill {
   display: inline-block;
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.05);
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
   font-size: 0.825rem;
   font-weight: 500;
-  color: #e2e8f0;
+  color: var(--text-secondary);
   transition: all 0.2s ease;
 }
 
@@ -210,7 +210,7 @@
   font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .pillar-desc {
@@ -236,7 +236,7 @@
   font-size: clamp(1.8rem, 3.2vw, 2.2rem);
   font-weight: 700;
   margin-bottom: 12px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .cta-desc {

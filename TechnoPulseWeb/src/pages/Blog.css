@@ -4,8 +4,8 @@
    ========================================================================== */
 
 .blog-page-wrap {
-  padding-top: 90px;
-  padding-bottom: 80px;
+  padding-top: 72px;
+  padding-bottom: 56px;
   min-height: 100vh;
 }
 
@@ -17,7 +17,7 @@
 .blog-main-title {
   font-size: clamp(2.2rem, 3.8vw, 3rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 12px;
   letter-spacing: -0.02em;
 }
@@ -75,7 +75,7 @@
 }
 
 .category-pill-btn {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(15, 23, 42, 0.04);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-family: var(--font-body);
@@ -88,9 +88,9 @@
 }
 
 .category-pill-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--text-primary);
+  border-color: rgba(15, 23, 42, 0.18);
 }
 
 .category-pill-btn.active {
@@ -102,7 +102,7 @@
 
 /* Featured Post Spotlight */
 .featured-post-wrap {
-  margin-bottom: 48px;
+  margin-bottom: 36px;
 }
 
 .featured-post-card {
@@ -165,7 +165,7 @@
 .featured-title {
   font-size: clamp(1.5rem, 2.8vw, 2.1rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.25;
   margin-bottom: 14px;
   transition: color 0.15s ease;
@@ -189,7 +189,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
   padding-top: 20px;
 }
 
@@ -210,7 +210,7 @@
 .author-name {
   font-size: 0.92rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .author-role {
@@ -234,7 +234,7 @@
 .grid-section-title {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .grid-count-badge {
@@ -243,7 +243,7 @@
   color: var(--text-muted);
   padding: 3px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(15, 23, 42, 0.04);
   border: 1px solid var(--border-subtle);
 }
 
@@ -252,7 +252,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 22px;
-  margin-bottom: 56px;
+  margin-bottom: 36px;
 }
 
 .blog-card {
@@ -302,7 +302,7 @@
 .blog-card-title {
   font-size: 1.15rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.35;
   margin-bottom: 10px;
   transition: color 0.15s ease;
@@ -323,7 +323,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
   padding-top: 14px;
 }
 
@@ -336,8 +336,8 @@
 .blog-tag-pill {
   font-size: 0.72rem;
   color: #94a3b8;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(15, 23, 42, 0.035);
+  border: 1px solid rgba(15, 23, 42, 0.06);
   padding: 2px 7px;
   border-radius: 4px;
   font-family: var(--font-mono);
@@ -360,14 +360,14 @@
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(15, 23, 42, 0.15);
 }
 
 .author-name-mini {
   display: block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.2;
 }
 
@@ -399,12 +399,12 @@
   padding: 48px 24px;
   text-align: center;
   border-radius: var(--radius-md);
-  margin-bottom: 56px;
+  margin-bottom: 36px;
 }
 
 .empty-title {
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -452,7 +452,7 @@
 .newsletter-title {
   font-size: 1.45rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 

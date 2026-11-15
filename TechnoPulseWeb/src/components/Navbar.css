@@ -1,6 +1,6 @@
 /* ==========================================================================
-   NAVBAR STYLESHEET
-   Technoplus Solutions Private Limited - Direct Navigation (No Dropdown)
+   NAVBAR STYLESHEET - CRISP LIGHT THEME
+   Technoplus Solutions Private Limited
    ========================================================================== */
 
 .site-header {
@@ -10,14 +10,18 @@
   right: 0;
   z-index: 900;
   background-color: var(--bg-header-footer);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 84px;
+  height: 72px;
   max-width: 1280px;
 }
 
@@ -26,6 +30,12 @@
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.brand-link:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .brand-logo {
@@ -35,43 +45,43 @@
   object-fit: contain;
 }
 
-/* Desktop Navigation - All Items Directly Displayed */
+/* Desktop Navigation */
 .desktop-nav {
   display: none;
   align-items: center;
-  gap: clamp(10px, 1.3vw, 22px);
+  gap: clamp(10px, 1.4vw, 24px);
   margin: 0 16px;
 }
 
 .nav-item {
   font-family: var(--font-body);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-secondary);
-  transition: color 0.15s ease;
+  transition: color 0.2s ease;
   text-decoration: none;
   position: relative;
-  padding: 6px 2px;
+  padding: 8px 4px;
   white-space: nowrap;
 }
 
 .nav-item:hover {
-  color: #ffffff;
+  color: var(--accent-primary);
 }
 
 .nav-item.active {
-  color: #ffffff;
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
 .active-nav-indicator {
   position: absolute;
-  bottom: -2px;
+  bottom: 0px;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--accent-cyan);
-  border-radius: 1px;
+  height: 2.5px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
 }
 
 /* Header Right Actions */
@@ -83,9 +93,9 @@
 }
 
 .desktop-cta {
-  padding: 8px 16px;
-  font-size: 0.84rem;
-  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 0.86rem;
+  border-radius: var(--radius-sm);
   display: none;
   white-space: nowrap;
 }
@@ -94,24 +104,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  padding: 7px;
-  color: #ffffff;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  color: var(--text-primary);
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Mobile Drawer - Clean Vertical List of All Menu Items */
+.mobile-toggle:hover {
+  background: #f1f5f9;
+  border-color: var(--border-hover);
+}
+
+/* Mobile Drawer */
 .mobile-drawer {
-  background: var(--bg-header-footer);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px 20px 24px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 18px 20px 28px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: calc(100vh - 84px);
+  max-height: calc(100vh - 72px);
   overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-nav-group {
@@ -124,8 +142,8 @@
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
-  padding: 10px 14px;
-  border-radius: 6px;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
   background: transparent;
   display: flex;
   align-items: center;
@@ -134,27 +152,28 @@
 }
 
 .mobile-nav-item:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.03);
+  color: var(--accent-primary);
+  background: #f8fafc;
 }
 
 .mobile-nav-item.active {
   font-weight: 600;
-  color: var(--accent-cyan);
-  background: rgba(0, 245, 212, 0.06);
+  color: var(--accent-primary);
+  background: rgba(37, 99, 235, 0.06);
+  border-left: 3px solid var(--accent-primary);
 }
 
 .mobile-cta-wrapper {
-  padding-top: 12px;
-  margin-top: 4px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+  margin-top: 6px;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .mobile-cta-btn {
   width: 100%;
-  border-radius: 6px;
-  padding: 11px 16px;
-  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  font-size: 0.92rem;
 }
 
 /* Responsive Breakpoints */

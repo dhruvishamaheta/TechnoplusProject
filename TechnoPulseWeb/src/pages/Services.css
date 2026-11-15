@@ -4,21 +4,21 @@
    ========================================================================== */
 
 .services-page-wrap {
-  padding-top: 90px;
-  padding-bottom: 70px;
+  padding-top: 72px;
+  padding-bottom: 56px;
   min-height: 100vh;
 }
 
 .services-header {
   max-width: 700px;
-  margin-bottom: 44px;
+  margin-bottom: 36px;
 }
 
 .services-main-title {
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   margin-bottom: 12px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: -0.015em;
 }
 
@@ -32,7 +32,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 22px;
-  margin-bottom: 52px;
+  margin-bottom: 40px;
 }
 
 .service-card {
@@ -100,7 +100,7 @@
 
 .service-card-title {
   font-size: 1.2rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 10px;
   font-weight: 600;
   line-height: 1.35;
@@ -122,7 +122,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(15, 23, 42, 0.05);
   padding-top: 16px;
 }
 
@@ -136,9 +136,9 @@
   font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(15, 23, 42, 0.04);
   color: #94a3b8;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.06);
   font-weight: 500;
 }
 
@@ -181,7 +181,7 @@
 
 .services-bottom-title {
   font-size: 1.25rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 6px;
   font-weight: 600;
 }

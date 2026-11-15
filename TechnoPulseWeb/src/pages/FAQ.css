@@ -1,11 +1,11 @@
 /* FAQ Page Styles */
 .faq-page-wrap {
-  padding-top: 90px;
+  padding-top: 72px;
   min-height: 100vh;
 }
 
 .faq-hero-section {
-  padding-top: 40px;
+  padding-top: 28px;
   padding-bottom: 30px;
 }
 
@@ -18,7 +18,7 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 18px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .faq-hero-desc {
@@ -56,7 +56,7 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 0.95rem;
   font-family: inherit;
 }
@@ -76,7 +76,7 @@
 }
 
 .clear-search-btn:hover {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Category Tabs */
@@ -89,8 +89,8 @@
 
 .faq-cat-btn {
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
   font-family: inherit;
@@ -101,8 +101,8 @@
 }
 
 .faq-cat-btn:hover {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--text-primary);
+  border-color: rgba(15, 23, 42, 0.22);
 }
 
 .faq-cat-btn.active {
@@ -162,7 +162,7 @@
 .faq-question-text {
   font-size: 1.075rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.4;
 }
 
@@ -170,7 +170,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,7 +187,7 @@
 
 .faq-answer-container {
   padding: 0 24px 22px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
 }
 
 .faq-answer-text {
@@ -210,7 +210,7 @@
 
 .faq-empty-state h3 {
   font-size: 1.25rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -225,7 +225,7 @@
 
 /* Still Have Questions CTA Banner */
 .faq-cta-banner {
-  margin-top: 50px;
+  margin-top: 36px;
   padding: 32px 28px;
   display: flex;
   justify-content: space-between;
@@ -258,7 +258,7 @@
 
 .faq-cta-title {
   font-size: 1.15rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 6px;
   font-weight: 600;
 }

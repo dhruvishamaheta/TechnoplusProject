@@ -4,8 +4,8 @@
    ========================================================================== */
 
 .service-details-wrap {
-  padding-top: 86px;
-  padding-bottom: 80px;
+  padding-top: 72px;
+  padding-bottom: 56px;
   min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .breadcrumb-sep {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(15, 23, 42, 0.2);
 }
 
 .breadcrumb-current {
@@ -99,13 +99,13 @@
   font-size: clamp(2.1rem, 4vw, 3.2rem);
   font-weight: 700;
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .service-hero-tagline {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: #e2e8f0;
+  color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 16px;
   font-weight: 500;
@@ -122,7 +122,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 44px;
+  margin-bottom: 36px;
 }
 
 .hero-action-btn {
@@ -170,7 +170,7 @@
 .section-title {
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-top: 8px;
   margin-bottom: 10px;
   letter-spacing: -0.015em;
@@ -222,7 +222,7 @@
 .capability-title {
   font-size: 1.15rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 10px;
   line-height: 1.35;
 }
@@ -237,7 +237,7 @@
 .service-process-section {
   padding-top: 48px;
   padding-bottom: 56px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .process-grid {
@@ -283,7 +283,7 @@
 .process-step-title {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -297,7 +297,7 @@
 .service-deliverables-tech-section {
   padding-top: 48px;
   padding-bottom: 56px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .two-column-grid {
@@ -337,7 +337,7 @@
 .column-card-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
@@ -359,7 +359,7 @@
   gap: 12px;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: #e2e8f0;
+  color: var(--text-secondary);
 }
 
 .deliverable-check-icon {
@@ -381,17 +381,17 @@
   gap: 8px;
   padding: 6px 14px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   font-size: 0.85rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   transition: all 0.15s ease;
 }
 
 .tech-badge-item:hover {
   background: rgba(0, 245, 212, 0.06);
   border-color: rgba(0, 245, 212, 0.3);
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .tech-badge-dot {
@@ -432,7 +432,7 @@
 .service-faq-section {
   padding-top: 48px;
   padding-bottom: 56px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .service-faq-list {
@@ -466,7 +466,7 @@
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   cursor: pointer;
   gap: 16px;
   transition: color 0.15s ease;
@@ -492,7 +492,7 @@
   font-size: 0.92rem;
   line-height: 1.65;
   color: var(--text-secondary);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
   padding-top: 14px;
 }
 
@@ -522,7 +522,7 @@
 .service-bottom-cta-title {
   font-size: clamp(1.4rem, 2.4vw, 1.85rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 10px;
   letter-spacing: -0.01em;
 }
@@ -543,7 +543,7 @@
 .service-other-section {
   padding-top: 36px;
   padding-bottom: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .other-services-head {
@@ -558,7 +558,7 @@
 .other-services-title {
   font-size: 1.35rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
@@ -604,7 +604,7 @@
 .other-service-card-title {
   font-size: 1.08rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -645,7 +645,7 @@
 
 .not-found-title {
   font-size: 2.2rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 12px;
 }
 
@@ -667,7 +667,7 @@
   flex-direction: column;
   gap: 12px;
   text-align: left;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
   padding-top: 24px;
 }
 
@@ -691,9 +691,9 @@
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+  background: rgba(15, 23, 42, 0.035);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  color: var(--text-primary);
   font-size: 0.92rem;
   transition: all 0.15s ease;
 }

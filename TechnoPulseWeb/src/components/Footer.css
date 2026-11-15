@@ -1,26 +1,33 @@
-/* Lightweight, Minimal Footer Styles */
+/* ==========================================================================
+   FOOTER STYLESHEET - CYBER-LUXE DESIGN
+   Technoplus Solutions Private Limited
+   ========================================================================== */
+
 .site-footer {
   background-color: var(--bg-header-footer);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-container {
-  padding-top: 48px;
-  padding-bottom: 24px;
+  padding-top: 56px;
+  padding-bottom: 28px;
 }
 
 .footer-main-row {
   display: grid;
   grid-template-columns: 1.6fr 1.2fr 1.2fr;
   gap: 40px;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 820px) {
   .footer-main-row {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 32px;
   }
 
   .footer-brand {
@@ -31,7 +38,7 @@
 @media (max-width: 540px) {
   .footer-main-row {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 26px;
   }
 
   .footer-brand {
@@ -39,7 +46,7 @@
   }
 }
 
-/* Brand */
+/* Brand Column */
 .footer-brand {
   max-width: 520px;
 }
@@ -47,87 +54,97 @@
 .footer-logo-link {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 1px;
+  margin-bottom: 14px;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo-link:hover {
+  opacity: 0.9;
 }
 
 .footer-logo {
   height: 50px;
   width: auto;
   display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 245, 212, 0.2));
 }
 
 .footer-desc {
-  font-size: 0.84rem;
-  line-height: 1.6;
+  font-size: 0.86rem;
+  line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .footer-socials {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer-icon-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .footer-icon-btn:hover {
   color: var(--accent-cyan);
   border-color: var(--border-accent);
-  background: rgba(0, 245, 212, 0.06);
-  transform: translateY(-1px);
+  background: rgba(0, 245, 212, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 245, 212, 0.2);
 }
 
 /* Titles */
 .footer-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 /* Quick Links Grid */
 .footer-links-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 16px;
+  gap: 10px 16px;
 }
 
 .footer-link {
   color: var(--text-secondary);
-  font-size: 0.83rem;
+  font-size: 0.85rem;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
+  display: inline-block;
 }
 
 .footer-link:hover {
   color: var(--accent-cyan);
+  transform: translateX(2px);
 }
 
 /* Contact List */
 .footer-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 0.83rem;
+  gap: 12px;
+  font-size: 0.85rem;
 }
 
 .footer-contact-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
@@ -144,9 +161,9 @@
 
 /* Bottom Bar */
 .footer-bottom {
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
