@@ -4,9 +4,8 @@
    ========================================================================== */
 
 .site-footer {
-  background-color: var(--bg-header-footer);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #161c28;
+  border-top: 1px solid #334155;
   margin-top: auto;
   position: relative;
   z-index: 10;
@@ -73,7 +72,7 @@
 .footer-desc {
   font-size: 0.86rem;
   line-height: 1.65;
-  color: var(--text-secondary);
+  color: #e2e8f0;
   margin-bottom: 20px;
 }
 
@@ -86,12 +85,12 @@
   width: 34px;
   height: 34px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(15, 23, 42, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  color: #e2e8f0;
   transition: all 0.2s ease;
 }
 
@@ -107,7 +106,7 @@
 .footer-title {
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff;
   margin-bottom: 16px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
@@ -121,7 +120,7 @@
 }
 
 .footer-link {
-  color: var(--text-secondary);
+  color: #e2e8f0;
   font-size: 0.85rem;
   text-decoration: none;
   transition: all 0.15s ease;
@@ -145,7 +144,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--text-secondary);
+  color: #e2e8f0;
   text-decoration: none;
   transition: color 0.15s ease;
 }
@@ -165,5 +164,5 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: #cbd5e1;
 }

@@ -34,7 +34,7 @@
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  background: rgba(22, 28, 40, 0.7);
+  background: var(--bg-input);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   max-width: 600px;
@@ -43,7 +43,7 @@
 
 .faq-search-box:focus-within {
   border-color: var(--border-accent);
-  box-shadow: 0 0 12px rgba(0, 245, 212, 0.15);
+  box-shadow: 0 0 0 3px var(--accent-primary-light);
 }
 
 .search-icon {
@@ -106,9 +106,9 @@
 }
 
 .faq-cat-btn.active {
-  background: var(--accent-cyan);
-  color: #07090e;
-  border-color: var(--accent-cyan);
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
   font-weight: 600;
 }
 
@@ -126,8 +126,8 @@
 }
 
 .faq-accordion-item.open {
-  border-color: rgba(0, 245, 212, 0.25);
-  background: rgba(25, 33, 48, 0.7);
+  border-color: var(--border-accent);
+  background: var(--accent-primary-light);
 }
 
 .faq-question-btn {
@@ -181,8 +181,8 @@
 
 .faq-chevron.rotated {
   transform: rotate(180deg);
-  background: rgba(0, 245, 212, 0.15);
-  color: var(--accent-cyan);
+  background: var(--accent-primary-light);
+  color: var(--accent-primary);
 }
 
 .faq-answer-container {
@@ -232,8 +232,8 @@
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
-  background: radial-gradient(circle at 10% 50%, rgba(0, 245, 212, 0.08) 0%, rgba(22, 28, 40, 0.6) 80%);
-  border: 1px solid rgba(0, 245, 212, 0.2);
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.92), rgba(255, 255, 255, 0.96));
+  border: 1px solid var(--border-accent);
 }
 
 .faq-cta-content {
@@ -247,8 +247,8 @@
   width: 52px;
   height: 52px;
   border-radius: var(--radius-sm);
-  background: rgba(0, 245, 212, 0.1);
-  border: 1px solid rgba(0, 245, 212, 0.25);
+  background: var(--accent-primary-light);
+  border: 1px solid var(--border-accent);
   color: var(--accent-cyan);
   display: flex;
   align-items: center;

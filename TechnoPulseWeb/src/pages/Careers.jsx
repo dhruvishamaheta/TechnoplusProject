@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { 
   Briefcase, 
   MapPin, 
@@ -27,6 +27,24 @@ export default function Careers() {
     portfolio: '',
     resumeNote: ''
   });
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedJob(null);
+      }
+    };
+
+    if (selectedJob) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedJob]);
 
   const perks = [
     {

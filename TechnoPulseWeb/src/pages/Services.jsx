@@ -1,9 +1,30 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, Sparkles, X } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 import './Services.css';
 
 export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedService(null);
+      }
+    };
+
+    if (selectedService) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedService]);
+
   return (
     <div className="services-page-wrap">
       <div className="container">
@@ -24,9 +45,10 @@ export default function Services() {
           {servicesData.map((item) => {
             const Icon = item.icon;
             return (
-              <Link
+              <button
                 key={item.id}
-                to={`/services/${item.id}`}
+                type="button"
+                onClick={() => setSelectedService(item)}
                 className="service-card glass-card"
                 aria-label={`View details for ${item.title}`}
               >
@@ -63,7 +85,7 @@ export default function Services() {
                     <ArrowRight size={15} className="service-explore-arrow" />
                   </div>
                 </div>
-              </Link>
+              </button>
             );
           })}
         </div>
@@ -82,6 +104,83 @@ export default function Services() {
           </Link>
         </div>
       </div>
+
+      {selectedService && (
+        <div
+          className="service-modal-backdrop"
+          onClick={() => setSelectedService(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="service-modal-title"
+        >
+          <div
+            className="service-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="service-modal-header">
+              <div>
+                <span className="service-modal-badge">{selectedService.badge}</span>
+                <h2 id="service-modal-title">{selectedService.title}</h2>
+              </div>
+              <button
+                type="button"
+                className="service-modal-close"
+                onClick={() => setSelectedService(null)}
+                aria-label="Close service details"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="service-modal-body">
+              <p className="service-modal-tagline">{selectedService.tagline}</p>
+              <p className="service-modal-description">{selectedService.fullDesc}</p>
+
+              <div className="service-modal-stats">
+                {selectedService.stats.map((stat) => (
+                  <div key={stat.label} className="service-modal-stat">
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <h3>Key capabilities</h3>
+              <div className="service-modal-capabilities">
+                {selectedService.capabilities.slice(0, 4).map((capability) => (
+                  <div key={capability.title} className="service-modal-capability">
+                    <CheckCircle2 size={17} />
+                    <div>
+                      <strong>{capability.title}</strong>
+                      <p>{capability.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="service-modal-tech">
+                {selectedService.tech.map((technology) => (
+                  <span key={technology}>{technology}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="service-modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setSelectedService(null)}
+              >
+                Close
+              </button>
+              <Link to={`/services/${selectedService.id}`} className="btn btn-primary">
+                View Full Service Page
+                <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

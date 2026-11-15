@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroAnimation from '../components/HeroAnimation';
 import { servicesData } from '../data/servicesData';
@@ -54,6 +55,37 @@ export default function Home() {
 
   // Top 4 flagship services
   const coreServices = servicesData.slice(0, 4);
+
+  useEffect(() => {
+    const homeRoot = document.querySelector('.home-page-root');
+    if (!homeRoot) return undefined;
+
+    homeRoot.classList.add('home-motion-ready');
+    const revealItems = homeRoot.querySelectorAll('.home-reveal');
+    if (!('IntersectionObserver' in window)) {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+      return () => homeRoot.classList.remove('home-motion-ready');
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.12 }
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+      homeRoot.classList.remove('home-motion-ready');
+    };
+  }, []);
 
   return (
     <div className="home-page-root">
@@ -115,7 +147,7 @@ export default function Home() {
       {/* =========================================================================
           KEY STATS ROW - MINIMALIST GLASS CARDS
           ========================================================================= */}
-      <section className="stats-section">
+      <section className="stats-section home-reveal">
         <div className="container">
           <div className="stats-grid">
             <div className="stat-card">
@@ -145,7 +177,7 @@ export default function Home() {
       {/* =========================================================================
           MINIMAL TECH STACK RIBBON
           ========================================================================= */}
-      <div className="marquee-section">
+      <div className="marquee-section home-reveal">
         <div className="marquee-outer-wrap">
           <div className="marquee-track">
             {[...TECH_STACK, ...TECH_STACK].map((tech, idx) => (
@@ -161,7 +193,7 @@ export default function Home() {
       {/* =========================================================================
           CORE PRACTICES & SERVICES
           ========================================================================= */}
-      <section className="section-padding">
+      <section className="section-padding home-reveal">
         <div className="container">
           <div className="section-head-wrap">
             <div className="badge">
@@ -218,7 +250,7 @@ export default function Home() {
       {/* =========================================================================
           HOW WE WORK - CLEAN DELIVERY TIMELINE
           ========================================================================= */}
-      <section className="section-padding process-section">
+      <section className="section-padding process-section home-reveal">
         <div className="container">
           <div className="section-head-wrap">
             <div className="badge">
@@ -246,7 +278,7 @@ export default function Home() {
       {/* =========================================================================
           MINIMAL CALL TO ACTION
           ========================================================================= */}
-      <section className="home-cta-section">
+      <section className="home-cta-section home-reveal">
         <div className="container">
           <div className="home-cta-box">
             <h2 className="home-cta-title">Have a project in mind?</h2>

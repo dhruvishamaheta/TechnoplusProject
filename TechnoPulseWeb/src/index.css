@@ -319,3 +319,345 @@ a {
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
+
+/* Responsive layout safeguards shared by every page */
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .desktop-nav,
+  .desktop-cta {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .contact-content-grid,
+  .projects-grid,
+  .blog-cards-grid,
+  .services-grid,
+  .capabilities-grid,
+  .two-column-grid,
+  .facts-grid,
+  .mission-vision-grid,
+  .perks-grid,
+  .about-story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects-grid,
+  .blog-cards-grid,
+  .services-grid,
+  .capabilities-grid,
+  .two-column-grid {
+    gap: 18px;
+  }
+
+  .projects-grid > *,
+  .blog-cards-grid > *,
+  .services-grid > *,
+  .capabilities-grid > *,
+  .two-column-grid > *,
+  .facts-grid > *,
+  .mission-vision-grid > *,
+  .contact-content-grid > *,
+  .perks-grid > * {
+    min-width: 0;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 116px;
+  }
+
+  .hero-text-container {
+    max-width: 680px;
+  }
+
+  .hero-main-title {
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
+  }
+
+  .modal-backdrop,
+  .service-modal-backdrop,
+  .blog-modal-backdrop,
+  .modal-overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 88px;
+    padding-bottom: 20px;
+  }
+
+  .modal-content-box,
+  .service-modal,
+  .blog-modal,
+  .modal-dialog {
+    max-height: calc(100vh - 108px);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section-padding {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .navbar-container {
+    height: 64px;
+  }
+
+  .brand-logo {
+    height: 40px;
+  }
+
+  .mobile-drawer {
+    max-height: calc(100vh - 64px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-section {
+    padding-top: 96px;
+    padding-bottom: 42px;
+  }
+
+  .hero-main-title {
+    font-size: clamp(1.9rem, 10vw, 2.65rem);
+    line-height: 1.12;
+  }
+
+  .hero-description {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 26px;
+  }
+
+  .hero-cta-group,
+  .hero-trust-row,
+  .about-hero-actions,
+  .service-hero-actions,
+  .cta-actions,
+  .cta-button-row,
+  .home-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group .btn,
+  .about-hero-actions .btn,
+  .service-hero-actions .btn,
+  .cta-actions .btn,
+  .cta-button-row .btn,
+  .home-cta-actions .btn {
+    width: 100%;
+  }
+
+  .stats-grid,
+  .about-stats-grid,
+  .company-metrics-grid,
+  .contact-content-grid,
+  .projects-grid,
+  .blog-cards-grid,
+  .services-grid,
+  .process-grid,
+  .process-steps-grid,
+  .capabilities-grid,
+  .two-column-grid,
+  .facts-grid,
+  .mission-vision-grid,
+  .governance-grid,
+  .perks-grid,
+  .team-grid,
+  .related-grid,
+  .other-services-grid,
+  .suggestions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid,
+  .about-stats-grid,
+  .company-metrics-grid {
+    gap: 12px;
+  }
+
+  .stat-card,
+  .about-stat-card,
+  .company-metric-card {
+    padding: 18px 16px;
+  }
+
+  .projects-filter-bar,
+  .category-filter-bar,
+  .faq-category-tabs,
+  .blog-categories-list {
+    gap: 8px;
+  }
+
+  .project-filter-pill,
+  .category-filter-btn,
+  .faq-cat-btn,
+  .category-pill-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .projects-bottom-cta,
+  .services-bottom-cta,
+  .team-footer-note {
+    align-items: stretch;
+    padding: 24px 18px;
+  }
+
+  .projects-cta-btn,
+  .services-cta-btn {
+    width: 100%;
+  }
+
+  .journey-item-card {
+    gap: 14px;
+    padding: 18px 16px;
+  }
+
+  .journey-year-col {
+    min-width: 48px;
+  }
+
+  .fact-item,
+  .column-card-header,
+  .card-header-row,
+  .service-hero-header {
+    gap: 12px;
+  }
+
+  .fact-value,
+  .deliverable-item,
+  .card-body-text {
+    overflow-wrap: anywhere;
+  }
+
+  .service-hero-title,
+  .company-main-title,
+  .about-hero-title,
+  .faq-hero-title,
+  .careers-hero-title,
+  .projects-main-title,
+  .blog-main-title,
+  .team-main-title {
+    font-size: clamp(1.85rem, 9vw, 2.55rem);
+  }
+
+  .service-hero-header {
+    align-items: flex-start;
+  }
+
+  .service-hero-icon-box {
+    width: 48px;
+    height: 48px;
+  }
+
+  .modal-header,
+  .service-modal-header,
+  .blog-modal-header {
+    padding: 18px 20px;
+  }
+
+  .modal-body,
+  .service-modal-body,
+  .blog-modal-body {
+    padding: 20px;
+  }
+
+  .modal-footer,
+  .service-modal-footer,
+  .blog-modal-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    padding: 16px 20px;
+  }
+
+  .modal-footer .btn,
+  .service-modal-footer .btn,
+  .blog-modal-footer .btn,
+  .modal-footer button,
+  .service-modal-footer button {
+    width: 100%;
+  }
+
+  .apply-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-form {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keep page-specific grid minimums from creating horizontal overflow. */
+@media (max-width: 991px) {
+  #root .projects-grid,
+  #root .blog-cards-grid,
+  #root .services-grid,
+  #root .capabilities-grid,
+  #root .two-column-grid,
+  #root .facts-grid,
+  #root .mission-vision-grid,
+  #root .contact-content-grid,
+  #root .perks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  #root .projects-grid,
+  #root .blog-cards-grid,
+  #root .services-grid,
+  #root .capabilities-grid,
+  #root .two-column-grid,
+  #root .facts-grid,
+  #root .mission-vision-grid,
+  #root .contact-content-grid,
+  #root .perks-grid,
+  #root .team-grid,
+  #root .process-grid,
+  #root .process-steps-grid,
+  #root .related-grid,
+  #root .other-services-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #root .newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+}

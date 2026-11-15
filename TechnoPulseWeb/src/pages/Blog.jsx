@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -9,7 +9,8 @@ import {
   Search,
   Tag,
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  X
 } from 'lucide-react';
 import { blogsData, getFeaturedBlog } from '../data/blogsData';
 import './Blog.css';
@@ -29,8 +30,27 @@ export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [selectedBlog, setSelectedBlog] = useState(null);
 
   const featuredBlog = useMemo(() => getFeaturedBlog(), []);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedBlog(null);
+      }
+    };
+
+    if (selectedBlog) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedBlog]);
 
   const filteredBlogs = useMemo(() => {
     return blogsData.filter((blog) => {
@@ -110,7 +130,14 @@ export default function Blog() {
                   </div>
                 </div>
 
-                <Link to={`/blog/${featuredBlog.id}`} className="featured-title-link">
+                <Link
+                  to={`/blog/${featuredBlog.id}`}
+                  className="featured-title-link"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setSelectedBlog(featuredBlog);
+                  }}
+                >
                   <h2 className="featured-title">{featuredBlog.title}</h2>
                 </Link>
 
@@ -130,7 +157,14 @@ export default function Blog() {
                     </div>
                   </div>
 
-                  <Link to={`/blog/${featuredBlog.id}`} className="btn btn-primary featured-cta-btn">
+                  <Link
+                    to={`/blog/${featuredBlog.id}`}
+                    className="btn btn-primary featured-cta-btn"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setSelectedBlog(featuredBlog);
+                    }}
+                  >
                     <span>Read Article</span>
                     <ArrowRight size={15} />
                   </Link>
@@ -158,6 +192,10 @@ export default function Blog() {
                 to={`/blog/${post.id}`}
                 className="blog-card glass-card"
                 aria-label={`Read article: ${post.title}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setSelectedBlog(post);
+                }}
               >
                 <div className="blog-card-top">
                   <div className="blog-card-meta">
@@ -261,6 +299,94 @@ export default function Blog() {
           </div>
         </div>
       </div>
+
+      {selectedBlog && (
+        <div
+          className="blog-modal-backdrop"
+          onClick={() => setSelectedBlog(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="blog-modal-title"
+        >
+          <article
+            className="blog-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <header className="blog-modal-header">
+              <div>
+                <span className="blog-modal-badge">{selectedBlog.category}</span>
+                <h2 id="blog-modal-title">{selectedBlog.title}</h2>
+                <div className="blog-modal-meta">
+                  <span>{selectedBlog.date}</span>
+                  <span>•</span>
+                  <span>{selectedBlog.readTime}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="blog-modal-close"
+                onClick={() => setSelectedBlog(null)}
+                aria-label="Close article details"
+              >
+                <X size={20} />
+              </button>
+            </header>
+
+            <div className="blog-modal-body">
+              <p className="blog-modal-excerpt">{selectedBlog.excerpt}</p>
+              <p className="blog-modal-intro">{selectedBlog.intro}</p>
+
+              {selectedBlog.sections.map((section) => (
+                <section key={section.heading} className="blog-modal-section">
+                  <h3>{section.heading}</h3>
+                  <p>{section.text}</p>
+                  {section.callout && (
+                    <div className="blog-modal-callout">{section.callout}</div>
+                  )}
+                  {section.code && (
+                    <pre>
+                      <code>{section.code.snippet}</code>
+                    </pre>
+                  )}
+                  {section.bulletPoints && (
+                    <ul>
+                      {section.bulletPoints.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ))}
+
+              <section className="blog-modal-takeaways">
+                <h3>Key takeaways</h3>
+                <ul>
+                  {selectedBlog.keyTakeaways.map((takeaway) => (
+                    <li key={takeaway}>
+                      <CheckCircle2 size={16} />
+                      <span>{takeaway}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+
+            <footer className="blog-modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setSelectedBlog(null)}
+              >
+                Close
+              </button>
+              <Link to={`/blog/${selectedBlog.id}`} className="btn btn-primary">
+                Open Full Article
+                <ArrowRight size={15} />
+              </Link>
+            </footer>
+          </article>
+        </div>
+      )}
     </div>
   );
 }
