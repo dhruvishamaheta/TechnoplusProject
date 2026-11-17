@@ -1,6 +1,7 @@
 export const projectsData = [
   {
     id: 'finpulse-trading-platform',
+    image: '/images/finpulse.jpg',
     title: 'FinPulse: Real-Time Fintech Trading & Settlement Platform',
     client: 'Global Financial Services Partner',
     category: 'Fintech & Enterprise SaaS',
@@ -29,6 +30,7 @@ export const projectsData = [
   },
   {
     id: 'cloudorbit-kubernetes-devops',
+    image: '/images/cloudorbit.jpg',
     title: 'CloudOrbit: Multi-Region Kubernetes & Infrastructure Orchestration',
     client: 'Enterprise Logistics Conglomerate',
     category: 'Cloud & Infrastructure',
@@ -57,6 +59,7 @@ export const projectsData = [
   },
   {
     id: 'medisync-healthcare-telemedicine',
+    image: '/images/medisync.jpg',
     title: 'MediSync: HIPAA-Compliant Healthcare Telemedicine & Records Portal',
     client: 'Regional Healthcare Network',
     category: 'Healthcare & Web Platforms',
@@ -85,6 +88,7 @@ export const projectsData = [
   },
   {
     id: 'omnidoc-ai-document-intelligence',
+    image: '/images/omnidoc.jpg',
     title: 'OmniDoc AI: Intelligent Document Extraction & Semantic RAG System',
     client: 'Corporate Legal & Financial Advisory Firm',
     category: 'AI & Data Integration',
@@ -113,6 +117,7 @@ export const projectsData = [
   },
   {
     id: 'supplysphere-inventory-logistics',
+    image: '/images/supplysphere.jpg',
     title: 'SupplySphere: Global Supply Chain & Predictive Inventory Suite',
     client: 'Multinational Distribution Enterprise',
     category: 'Enterprise SaaS & Analytics',
@@ -141,6 +146,7 @@ export const projectsData = [
   },
   {
     id: 'cybershield-devsecops-auditor',
+    image: '/images/cybershield.jpg',
     title: 'CyberShield: Automated DevSecOps & Security Vulnerability Auditor',
     client: 'Fintech Banking Ecosystem',
     category: 'Cybersecurity & Auditing',

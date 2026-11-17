@@ -101,6 +101,15 @@ export default function Projects() {
               }}
               aria-label={`View details for ${project.title}`}
             >
+              <div className="project-card-image-wrap">
+                <img
+                  src={project.image}
+                  alt=""
+                  className="project-card-image"
+                  loading="lazy"
+                />
+              </div>
+
               <div className="project-card-top">
                 <div className="project-card-badges">
                   <span className="project-badge">{project.badge}</span>

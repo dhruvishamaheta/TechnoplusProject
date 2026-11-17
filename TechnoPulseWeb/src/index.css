@@ -430,7 +430,8 @@ select {
   }
 
   .brand-logo {
-    height: 40px;
+    height: 56px;
+    width: 56px;
   }
 
   .mobile-drawer {
@@ -658,6 +659,163 @@ select {
 
   #root .newsletter-form {
     flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .badge {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .btn {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .modal-backdrop,
+  .service-modal-backdrop,
+  .blog-modal-backdrop,
+  .modal-overlay {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .modal-content-box,
+  .service-modal,
+  .blog-modal,
+  .modal-dialog {
+    border-radius: var(--radius-md);
+  }
+}
+
+/* Keep every dialog usable on tablets and phones. */
+@media (max-width: 768px) {
+  #root .modal-backdrop,
+  #root .service-modal-backdrop,
+  #root .blog-modal-backdrop,
+  #root .modal-overlay {
+    align-items: flex-start;
+    padding: 76px 12px 12px;
+  }
+
+  #root .modal-content-box,
+  #root .service-modal,
+  #root .blog-modal,
+  #root .modal-dialog {
+    width: 100%;
+    min-width: 0;
+    max-height: calc(100vh - 88px);
+  }
+
+  #root .modal-header,
+  #root .service-modal-header,
+  #root .blog-modal-header {
+    min-width: 0;
+  }
+
+  #root .modal-header h2,
+  #root .service-modal-header h2,
+  #root .blog-modal-header h2,
+  #root .modal-job-title {
+    overflow-wrap: anywhere;
+  }
+
+  #root .modal-badges-group,
+  #root .modal-meta-row,
+  #root .blog-modal-meta {
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  #root .modal-body,
+  #root .service-modal-body,
+  #root .blog-modal-body,
+  #root .modal-body-content {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  #root .modal-stats-grid,
+  #root .service-modal-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #root .challenge-solution-grid,
+  #root .service-modal-capabilities {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #root .modal-footer,
+  #root .service-modal-footer,
+  #root .blog-modal-footer {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  #root .modal-backdrop,
+  #root .service-modal-backdrop,
+  #root .blog-modal-backdrop,
+  #root .modal-overlay {
+    padding: 72px 8px 8px;
+  }
+
+  #root .modal-content-box,
+  #root .service-modal,
+  #root .blog-modal,
+  #root .modal-dialog {
+    max-height: calc(100vh - 80px);
+  }
+
+  #root .modal-header,
+  #root .service-modal-header,
+  #root .blog-modal-header,
+  #root .modal-body,
+  #root .service-modal-body,
+  #root .blog-modal-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #root .modal-dialog {
+    padding: 24px 16px;
+  }
+
+  #root .modal-stats-grid,
+  #root .service-modal-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #root .modal-meta-sep {
+    display: none;
+  }
+
+  #root .modal-footer,
+  #root .service-modal-footer,
+  #root .blog-modal-footer {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    padding: 14px 16px;
+  }
+
+  #root .modal-footer .btn,
+  #root .service-modal-footer .btn,
+  #root .blog-modal-footer .btn,
+  #root .modal-close-action-btn,
+  #root .modal-contact-btn,
+  #root .submit-app-btn {
     width: 100%;
   }
 }

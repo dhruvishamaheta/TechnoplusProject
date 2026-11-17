@@ -21,8 +21,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
-  max-width: 1280px;
+  height: 80px;
+  max-width: 1290px;
 }
 
 .brand-link {
@@ -39,8 +39,8 @@
 }
 
 .brand-logo {
-  height: 48px;
-  width: auto;
+  height: 76px;
+  width: 76px;
   display: block;
   object-fit: contain;
 }

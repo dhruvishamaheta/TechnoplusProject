@@ -43,6 +43,11 @@
   .footer-brand {
     grid-column: span 1;
   }
+
+  .footer-logo {
+    width: 120px;
+    height: 64px;
+  }
 }
 
 /* Brand Column */
@@ -63,8 +68,8 @@
 }
 
 .footer-logo {
-  height: 50px;
-  width: auto;
+  height: 76px;
+  width: 180px;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(0, 245, 212, 0.2));
 }

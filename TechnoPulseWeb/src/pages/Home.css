@@ -64,6 +64,52 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(248, 250, 252, 0.35));
 }
 
+.hero-visual-panel {
+  position: absolute;
+  z-index: 1;
+  top: 21%;
+  right: max(5vw, calc((100vw - 1200px) / 2));
+  width: min(31vw, 390px);
+  aspect-ratio: 1.15;
+  overflow: hidden;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 70px rgba(30, 64, 175, 0.16);
+  transform: rotate(2deg);
+}
+
+.hero-visual-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: saturate(0.82) contrast(0.95);
+}
+
+.hero-visual-overlay {
+  position: absolute;
+  inset: auto 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(10px);
+}
+
+.hero-visual-overlay span {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-visual-overlay strong {
+  font-size: 1rem;
+}
+
 .hero-content-wrap {
   position: relative;
   z-index: 10;
@@ -294,6 +340,66 @@
   background: var(--accent-cyan);
 }
 
+.home-visual-section {
+  padding: 34px 0 10px;
+}
+
+.home-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.home-visual-card {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card);
+}
+
+.home-visual-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.home-visual-card:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.08);
+}
+
+.home-visual-card figcaption {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.home-visual-card figcaption strong {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.home-visual-card figcaption span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
 /* ==========================================================================
    SECTION COMMON HEADERS
    ========================================================================== */
@@ -337,6 +443,7 @@
   backdrop-filter: blur(14px);
   transition: all 0.25s ease;
   box-shadow: var(--shadow-card);
+  min-height: 304px;
   animation: cardFloatIn 0.7s ease both;
 }
 
@@ -577,20 +684,19 @@
   0% {
     background-position: 0% 20%;
   }
-
-  @keyframes heroGlowDrift {
-    from {
-      transform: translate3d(0, 0, 0) scale(0.9);
-      opacity: 0.55;
-    }
-
-    to {
-      transform: translate3d(14vw, -8vh, 0) scale(1.15);
-      opacity: 1;
-    }
-  }
   100% {
     background-position: 100% 80%;
+  }
+}
+
+@keyframes heroGlowDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate3d(14vw, -8vh, 0) scale(1.15);
+    opacity: 1;
   }
 }
 
@@ -623,5 +729,21 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-visual-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-visual-card {
+    height: 160px;
   }
 }
