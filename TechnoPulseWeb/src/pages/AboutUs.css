@@ -224,7 +224,7 @@
   padding: 50px 30px;
   text-align: center;
   border: 1px solid rgba(0, 245, 212, 0.2);
-  background: radial-gradient(circle at 50% 0%, rgba(0, 245, 212, 0.08) 0%, rgba(22, 28, 40, 0.6) 70%);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
 }
 
 .cta-icon {
@@ -236,12 +236,12 @@
   font-size: clamp(1.8rem, 3.2vw, 2.2rem);
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--text-primary);
+  color: #0f172a;
 }
 
 .cta-desc {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: #475569;
   max-width: 580px;
   margin: 0 auto 28px auto;
   line-height: 1.6;

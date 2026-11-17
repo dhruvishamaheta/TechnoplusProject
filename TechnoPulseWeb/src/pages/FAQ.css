@@ -232,8 +232,8 @@
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
-  background: linear-gradient(135deg, rgba(239, 246, 255, 0.92), rgba(255, 255, 255, 0.96));
-  border: 1px solid var(--border-accent);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px solid rgba(0, 245, 212, 0.2);
 }
 
 .faq-cta-content {
@@ -247,8 +247,8 @@
   width: 52px;
   height: 52px;
   border-radius: var(--radius-sm);
-  background: var(--accent-primary-light);
-  border: 1px solid var(--border-accent);
+  background: rgba(0, 245, 212, 0.08);
+  border: 1px solid rgba(0, 245, 212, 0.25);
   color: var(--accent-cyan);
   display: flex;
   align-items: center;
@@ -258,14 +258,14 @@
 
 .faq-cta-title {
   font-size: 1.15rem;
-  color: var(--text-primary);
+  color: #0f172a;
   margin-bottom: 6px;
   font-weight: 600;
 }
 
 .faq-cta-desc {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: #475569;
   line-height: 1.5;
 }
 

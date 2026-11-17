@@ -1,7 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeroAnimation from '../components/HeroAnimation';
 import { servicesData } from '../data/servicesData';
+import image1 from '../assets/image1.jfif';
+import image2 from '../assets/image2.jfif';
+import image3 from '../assets/image3.jfif';
+import image4 from '../assets/image4.jfif';
+import image5 from '../assets/image5.jfif';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -35,28 +40,36 @@ const DELIVERY_STATS = [
   { value: '24/7', label: 'Operational mindset', sub: 'Monitoring, support, and iteration' }
 ];
 
-const DELIVERY_HIGHLIGHTS = [
+const HERO_BANNERS = [
   {
-    image: '/images/finpulse.jpg',
-    alt: 'Real-time financial technology dashboard',
-    label: 'Real-time platforms',
-    detail: 'Fast, observable systems for mission-critical workflows.'
+    image: image1,
+    label: 'Technology partnership',
+    detail: 'Collaborative teams turning ideas into practical digital solutions.'
   },
   {
-    image: '/images/omnidoc.jpg',
-    alt: 'Artificial intelligence data analytics',
-    label: 'Intelligent automation',
-    detail: 'Practical AI that turns business data into action.'
+    image: image2,
+    label: 'Digital innovation',
+    detail: 'Modern technology environments built for connected, productive teams.'
   },
   {
-    image: '/images/cybershield.jpg',
-    alt: 'Cybersecurity operations and monitoring',
-    label: 'Secure by design',
-    detail: 'Security and compliance considered from the first sprint.'
-  }
+    image: image3,
+    label: 'Data center infrastructure',
+    detail: 'Reliable server environments engineered for performance and availability.'
+  },
+  {
+    image: image4,
+    label: 'Engineering collaboration',
+    detail: 'Experienced teams designing, testing, and delivering better software.'
+  },
+  {
+    image: image5,
+    label: 'Software development',
+    detail: 'Clean, scalable code across modern programming languages and platforms.'
+  },
 ];
 
 export default function Home() {
+  const [activeBannerIndex, setActiveBannerIndex] = useState(0);
   const processSteps = [
     {
       step: '01',
@@ -82,6 +95,14 @@ export default function Home() {
 
   // Top 4 flagship services
   const coreServices = servicesData.slice(0, 4);
+
+  useEffect(() => {
+    const bannerTimer = window.setInterval(() => {
+      setActiveBannerIndex((currentIndex) => (currentIndex + 1) % HERO_BANNERS.length);
+    }, 3000);
+
+    return () => window.clearInterval(bannerTimer);
+  }, []);
 
   useEffect(() => {
     const homeRoot = document.querySelector('.home-page-root');
@@ -205,20 +226,30 @@ export default function Home() {
       </div>
 
       {/* =========================================================================
-          VISUAL DELIVERY HIGHLIGHTS
+          LIVE INFRASTRUCTURE BANNER
           ========================================================================= */}
-      <section className="home-visual-section home-reveal">
+      <section className="home-banner-section home-reveal">
         <div className="container">
-          <div className="home-visual-grid">
-            {DELIVERY_HIGHLIGHTS.map((highlight) => (
-              <figure key={highlight.label} className="home-visual-card">
-                <img src={highlight.image} alt={highlight.alt} loading="lazy" />
-                <figcaption>
-                  <strong>{highlight.label}</strong>
-                  <span>{highlight.detail}</span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="build-banner" aria-live="polite">
+            <img
+              key={HERO_BANNERS[activeBannerIndex].image}
+              src={HERO_BANNERS[activeBannerIndex].image}
+              alt={HERO_BANNERS[activeBannerIndex].label}
+              className="hero-visual-image"
+            />
+            <div className="hero-visual-overlay">
+              <span>Technoplus infrastructure</span>
+              <strong>{HERO_BANNERS[activeBannerIndex].label}</strong>
+              <p>{HERO_BANNERS[activeBannerIndex].detail}</p>
+              <div className="hero-banner-progress" aria-hidden="true">
+                {HERO_BANNERS.map((banner, index) => (
+                  <span
+                    key={banner.label}
+                    className={index === activeBannerIndex ? 'is-active' : ''}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

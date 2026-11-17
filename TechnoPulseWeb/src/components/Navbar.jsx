@@ -79,8 +79,10 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer Menu - All links directly listed */}
-      {mobileMenuOpen && (
-        <div className="mobile-drawer">
+      <div
+        className={`mobile-drawer ${mobileMenuOpen ? 'is-open' : ''}`}
+        aria-hidden={!mobileMenuOpen}
+      >
           <div className="mobile-nav-group">
             {navLinks.map((link) => (
               <NavLink
@@ -100,8 +102,7 @@ export default function Navbar() {
               <ArrowUpRight size={15} />
             </Link>
           </div>
-        </div>
-      )}
+      </div>
     </header>
   );
 }

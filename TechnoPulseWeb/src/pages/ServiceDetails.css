@@ -505,7 +505,7 @@
 .service-bottom-cta-box {
   padding: 40px 36px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(22, 28, 40, 0.9) 0%, rgba(13, 17, 25, 0.95) 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
   border: 1px solid rgba(0, 245, 212, 0.25);
   display: flex;
   flex-wrap: wrap;
@@ -522,14 +522,14 @@
 .service-bottom-cta-title {
   font-size: clamp(1.4rem, 2.4vw, 1.85rem);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #0f172a;
   margin-bottom: 10px;
   letter-spacing: -0.01em;
 }
 
 .service-bottom-cta-desc {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: #475569;
   line-height: 1.6;
 }
 

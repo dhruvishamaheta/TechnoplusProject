@@ -100,8 +100,8 @@
   margin-top: 36px;
   padding: 28px 24px;
   border-radius: 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px solid rgba(0, 245, 212, 0.2);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -111,12 +111,12 @@
 
 .team-footer-text h3 {
   font-size: 1.15rem;
-  color: var(--text-primary);
+  color: #0f172a;
   margin-bottom: 4px;
   font-weight: 600;
 }
 
 .team-footer-text p {
   font-size: 0.88rem;
-  color: var(--text-secondary);
+  color: #475569;
 }

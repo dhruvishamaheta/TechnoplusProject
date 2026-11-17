@@ -120,16 +120,39 @@
 
 /* Mobile Drawer */
 .mobile-drawer {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 18px 20px 28px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: calc(100vh - 72px);
+  max-height: 0;
   overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease,
+    opacity 0.22s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.3s ease;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-drawer.is-open {
+  max-height: calc(100vh - 80px);
+  padding: 18px 20px 28px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
 }
 
 .mobile-nav-group {
@@ -188,5 +211,21 @@
 
   .mobile-toggle {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-drawer {
+    top: 64px;
+  }
+
+  .mobile-drawer.is-open {
+    max-height: calc(100vh - 64px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer {
+    transition: none;
   }
 }

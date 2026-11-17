@@ -3,11 +3,9 @@ import {
   Building2, 
   Target, 
   Compass, 
-  ShieldCheck, 
   MapPin, 
   Mail, 
   Phone, 
-  CheckCircle2, 
   ArrowRight,
   Award,
   Calendar,
@@ -60,25 +58,6 @@ export default function CompanyDetails() {
     }
   ];
 
-  const governanceItems = [
-    {
-      title: 'Strict Intellectual Property Protection',
-      desc: '100% of all source code, database architectures, and digital assets are legally transferred to your organization with full commercial rights.'
-    },
-    {
-      title: 'Enterprise Non-Disclosure (NDA)',
-      desc: 'Every client engagement is safeguarded by strict mutual non-disclosure agreements before technical discovery begins.'
-    },
-    {
-      title: 'Audited Cloud Security Standards',
-      desc: 'Adherence to OWASP Top 10 guidelines, encrypted data-at-rest and in-transit, with strict role-based least-privilege cloud IAM.'
-    },
-    {
-      title: 'Transparent Sprint Governance',
-      desc: 'Bi-weekly sprint demonstrations, live Git commit histories, and predictable milestone budgeting without surprise costs.'
-    }
-  ];
-
   return (
     <div className="company-page-wrap">
       {/* Hero Header */}
@@ -100,17 +79,66 @@ export default function CompanyDetails() {
         </div>
       </section>
 
-      {/* Metrics Grid */}
-      <section className="company-metrics-section">
+      {/* Timeline / Journey */}
+      <section className="company-journey-section section-padding">
         <div className="container">
-          <div className="company-metrics-grid">
-            {metrics.map((m, idx) => (
-              <div key={idx} className="company-metric-card glass-card">
-                <div className="metric-number">{m.number}</div>
-                <div className="metric-label">{m.label}</div>
-                <div className="metric-sub">{m.sub}</div>
+          <div className="section-header-left">
+            <span className="badge">
+              <Calendar size={14} />
+              Evolution Timeline
+            </span>
+            <h2 className="journey-section-title">Our Growth Journey</h2>
+            <p className="section-desc">
+              From our inception in Rajkot to delivering software systems across three continents.
+            </p>
+          </div>
+
+          <div className="journey-list">
+            {journey.map((item, idx) => (
+              <div key={idx} className="journey-item-card glass-card">
+                <div className="journey-year-col">
+                  <span className="journey-year">{item.year}</span>
+                  <div className="journey-node-dot" />
+                </div>
+                <div className="journey-content-col">
+                  <h3 className="journey-item-title">{item.title}</h3>
+                  <p className="journey-item-desc">{item.desc}</p>
+                </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="mission-vision-section section-padding">
+        <div className="container">
+          <div className="mission-vision-grid">
+            {/* Mission */}
+            <div className="mission-card glass-card">
+              <div className="card-header-row">
+                <div className="mission-icon-box">
+                  <Target size={22} />
+                </div>
+                <h2 className="card-section-title">Our Mission</h2>
+              </div>
+              <p className="card-body-text">
+                To engineer dependable, high-performance web systems and cloud infrastructure that help businesses operate with agility, security, and sustained reliability.
+              </p>
+            </div>
+
+            {/* Vision */}
+            <div className="vision-card glass-card">
+              <div className="card-header-row">
+                <div className="vision-icon-box">
+                  <Compass size={22} />
+                </div>
+                <h2 className="card-section-title">Our Vision</h2>
+              </div>
+              <p className="card-body-text">
+                To be a trusted global technology partner recognized for engineering craftsmanship, transparent client collaboration, and clean, resilient codebases.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -150,92 +178,15 @@ export default function CompanyDetails() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="mission-vision-section section-padding">
+      {/* Metrics Grid */}
+      <section className="company-metrics-section">
         <div className="container">
-          <div className="mission-vision-grid">
-            {/* Mission */}
-            <div className="mission-card glass-card">
-              <div className="card-header-row">
-                <div className="mission-icon-box">
-                  <Target size={22} />
-                </div>
-                <h2 className="card-section-title">Our Mission</h2>
-              </div>
-              <p className="card-body-text">
-                To engineer dependable, high-performance web systems and cloud infrastructure that help businesses operate with agility, security, and sustained reliability.
-              </p>
-            </div>
-
-            {/* Vision */}
-            <div className="vision-card glass-card">
-              <div className="card-header-row">
-                <div className="vision-icon-box">
-                  <Compass size={22} />
-                </div>
-                <h2 className="card-section-title">Our Vision</h2>
-              </div>
-              <p className="card-body-text">
-                To be a trusted global technology partner recognized for engineering craftsmanship, transparent client collaboration, and clean, resilient codebases.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline / Journey */}
-      <section className="company-journey-section section-padding">
-        <div className="container">
-          <div className="section-header-left">
-            <span className="badge">
-              <Calendar size={14} />
-              Evolution Timeline
-            </span>
-            <h2 className="journey-section-title">Our Growth Journey</h2>
-            <p className="section-desc">
-              From our inception in Rajkot to delivering software systems across three continents.
-            </p>
-          </div>
-
-          <div className="journey-list">
-            {journey.map((item, idx) => (
-              <div key={idx} className="journey-item-card glass-card">
-                <div className="journey-year-col">
-                  <span className="journey-year">{item.year}</span>
-                  <div className="journey-node-dot" />
-                </div>
-                <div className="journey-content-col">
-                  <h3 className="journey-item-title">{item.title}</h3>
-                  <p className="journey-item-desc">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Governance & Compliance */}
-      <section className="company-governance-section section-padding">
-        <div className="container">
-          <div className="section-header-left">
-            <span className="badge">
-              <ShieldCheck size={14} />
-              Operational Governance
-            </span>
-            <h2 className="section-title">Compliance, Security &amp; Ownership</h2>
-            <p className="section-desc">
-              Every system built by Technoplus Solutions operates under strict legal and technological safeguards.
-            </p>
-          </div>
-
-          <div className="governance-grid">
-            {governanceItems.map((item, idx) => (
-              <div key={idx} className="governance-card glass-card">
-                <div className="gov-icon-row">
-                  <CheckCircle2 size={18} className="gov-check-icon" />
-                  <h3 className="gov-title">{item.title}</h3>
-                </div>
-                <p className="gov-desc">{item.desc}</p>
+          <div className="company-metrics-grid">
+            {metrics.map((m, idx) => (
+              <div key={idx} className="company-metric-card glass-card">
+                <div className="metric-number">{m.number}</div>
+                <div className="metric-label">{m.label}</div>
+                <div className="metric-sub">{m.sub}</div>
               </div>
             ))}
           </div>

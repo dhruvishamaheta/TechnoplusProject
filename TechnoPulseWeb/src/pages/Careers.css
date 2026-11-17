@@ -399,6 +399,59 @@
   color: var(--text-secondary);
 }
 
+.careers-page-wrap .modal-dialog {
+  max-width: 760px;
+  max-height: 90vh;
+  padding: 0;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2), var(--shadow-card-hover);
+}
+
+.careers-page-wrap .modal-header {
+  margin-bottom: 0;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.careers-page-wrap .modal-body-content {
+  padding: 24px;
+}
+
+.careers-page-wrap .modal-details-section {
+  padding: 18px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.careers-page-wrap .job-apply-form {
+  margin-top: 20px;
+}
+
+.careers-page-wrap .form-text-input,
+.careers-page-wrap .form-textarea {
+  background: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .careers-page-wrap .modal-dialog {
+    max-height: 94vh;
+  }
+
+  .careers-page-wrap .modal-header,
+  .careers-page-wrap .modal-body-content {
+    padding: 18px;
+  }
+
+  .careers-page-wrap .modal-close-btn {
+    top: 16px;
+    right: 16px;
+  }
+}
+
 .form-field-group {
   display: flex;
   flex-direction: column;

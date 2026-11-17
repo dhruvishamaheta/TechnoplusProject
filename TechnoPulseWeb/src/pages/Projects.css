@@ -263,8 +263,8 @@
 
 /* Bottom CTA Card */
 .projects-bottom-cta {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px solid rgba(0, 245, 212, 0.2);
   border-radius: var(--radius-md);
   padding: 34px 30px;
   display: flex;
@@ -280,14 +280,14 @@
 
 .projects-cta-title {
   font-size: 1.3rem;
-  color: var(--text-primary);
+  color: #0f172a;
   margin-bottom: 6px;
   font-weight: 600;
 }
 
 .projects-cta-desc {
   font-size: 0.92rem;
-  color: var(--text-secondary);
+  color: #475569;
 }
 
 .projects-cta-btn {
@@ -324,11 +324,11 @@
 
 .modal-content-box {
   width: 100%;
-  max-width: 780px;
+  max-width: 900px;
   max-height: 90vh;
   background: var(--bg-card);
   border: 1px solid var(--border-accent);
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2), var(--shadow-card-hover);
   display: flex;
   flex-direction: column;
@@ -350,6 +350,7 @@
 /* Modal Header */
 .modal-header {
   padding: 20px 24px;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   display: flex;
   align-items: center;
@@ -407,6 +408,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  background: #ffffff;
 }
 
 .modal-title {
@@ -454,8 +456,9 @@
 
 .modal-stat-card {
   padding: 14px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-primary-light);
+  min-height: 78px;
+  border-radius: 8px;
+  background: #f8fafc;
   border: 1px solid var(--border-subtle);
 }
 
@@ -482,7 +485,8 @@
 
 .cs-card {
   padding: 18px 20px;
-  border-radius: var(--radius-sm);
+  min-height: 130px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -531,7 +535,7 @@
 /* Impact Box */
 .modal-impact-box {
   padding: 16px 20px;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
   background: var(--accent-primary-light);
   border: 1px solid var(--border-accent);
   display: flex;
@@ -606,8 +610,8 @@
   font-size: 0.8rem;
   padding: 4px 12px;
   border-radius: 6px;
-  background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
 }
 
@@ -627,7 +631,7 @@
   justify-content: flex-end;
   gap: 12px;
   flex-shrink: 0;
-  background: var(--bg-body-secondary);
+  background: #f8fafc;
 }
 
 .modal-close-action-btn {
@@ -647,6 +651,11 @@
 
   .modal-body {
     padding: 20px 18px;
+    gap: 18px;
+  }
+
+  .challenge-solution-grid {
+    grid-template-columns: 1fr;
   }
 
   .modal-footer {

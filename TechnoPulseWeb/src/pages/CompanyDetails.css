@@ -1,16 +1,21 @@
 /* Company Details Page External Stylesheet */
 .company-page-wrap {
   padding-top: 72px;
+  padding-bottom: 48px;
   min-height: 100vh;
 }
 
 .company-hero-section {
-  padding-top: 28px;
-  padding-bottom: 30px;
+  padding-top: 52px;
+  padding-bottom: 46px;
+  border-bottom: 1px solid var(--border-subtle);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(37, 99, 235, 0.08), transparent 30%),
+    radial-gradient(circle at 92% 20%, rgba(0, 245, 212, 0.06), transparent 28%);
 }
 
 .company-hero-content {
-  max-width: 800px;
+  max-width: 880px;
 }
 
 .company-main-title {
@@ -29,7 +34,8 @@
 
 /* Metrics Grid */
 .company-metrics-section {
-  padding-bottom: 30px;
+  padding-top: 28px;
+  padding-bottom: 24px;
 }
 
 .company-metrics-grid {
@@ -41,6 +47,13 @@
 .company-metric-card {
   padding: 24px 20px;
   text-align: left;
+  min-height: 132px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.company-metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .metric-number {
@@ -86,18 +99,31 @@
 /* Facts Card */
 .facts-card {
   padding: 32px 28px;
+  box-shadow: var(--shadow-card);
 }
 
 .facts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  gap: 16px;
 }
 
 .fact-item {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+  min-height: 128px;
+  padding: 18px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fact-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card);
 }
 
 .fact-icon-box {
@@ -144,7 +170,25 @@
 
 .mission-card,
 .vision-card {
+  position: relative;
+  overflow: hidden;
   padding: 32px 28px;
+  min-height: 190px;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  border: 1px solid var(--border-subtle);
+}
+
+.mission-card::before,
+.vision-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--accent-cyan);
+}
+
+.vision-card::before {
+  background: var(--accent-primary);
 }
 
 .card-header-row {
@@ -188,6 +232,7 @@
   font-size: 0.95rem;
   line-height: 1.7;
   color: var(--text-secondary);
+  max-width: 560px;
 }
 
 /* Journey Timeline */
@@ -199,50 +244,99 @@
 }
 
 .journey-list {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 880px;
+  gap: 28px;
+  max-width: 1080px;
+  padding: 12px 0;
+}
+
+.journey-list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(0, 245, 212, 0.8), rgba(37, 99, 235, 0.35));
+  transform: translateX(-50%);
 }
 
 .journey-item-card {
-  display: flex;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
   gap: 24px;
-  padding: 24px 26px;
-  align-items: flex-start;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .journey-item-card:hover {
-  transform: translateX(4px);
+  transform: none;
+}
+
+.journey-item-card:nth-child(odd) .journey-content-col {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: right;
+}
+
+.journey-item-card:nth-child(even) .journey-content-col {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.journey-content-col {
+  padding: 22px 24px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.journey-content-col:hover {
+  transform: translateY(-3px);
   border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .journey-year-col {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 60px;
+  min-width: 96px;
+  padding: 8px 0;
+  z-index: 2;
 }
 
 .journey-year {
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 245, 212, 0.35);
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   color: var(--accent-cyan);
   font-weight: 700;
   line-height: 1;
 }
 
 .journey-node-dot {
-  width: 6px;
-  height: 6px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--accent-cyan);
-  margin-top: 8px;
-}
-
-.journey-content-col {
-  flex: 1;
+  border: 3px solid var(--bg-page);
+  box-shadow: 0 0 0 2px rgba(0, 245, 212, 0.3);
+  margin-top: 10px;
 }
 
 .journey-item-title {
@@ -267,6 +361,7 @@
 
 .governance-card {
   padding: 24px 22px;
+  min-height: 168px;
 }
 
 .gov-icon-row {
@@ -297,20 +392,20 @@
 .company-cta-card {
   padding: 48px 32px;
   text-align: center;
-  border: 1px solid var(--border-accent);
-  background: linear-gradient(135deg, rgba(239, 246, 255, 0.92), rgba(255, 255, 255, 0.96));
+  border: 1px solid rgba(0, 245, 212, 0.2);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
 }
 
 .cta-heading {
   font-size: clamp(1.7rem, 3vw, 2.2rem);
-  color: var(--text-primary);
+  color: #0f172a;
   font-weight: 700;
   margin-bottom: 12px;
 }
 
 .cta-subtext {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: #475569;
   max-width: 580px;
   margin: 0 auto 28px auto;
   line-height: 1.6;
@@ -321,4 +416,85 @@
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .company-page-wrap {
+    padding-top: 60px;
+    padding-bottom: 24px;
+  }
+
+  .company-hero-section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .company-description {
+    font-size: 1rem;
+  }
+
+  .facts-card {
+    padding: 22px 18px;
+  }
+
+  .fact-item {
+    gap: 12px;
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .fact-icon-box {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mission-card,
+  .vision-card {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+
+  .governance-card {
+    min-height: auto;
+  }
+
+  .company-cta-card {
+    padding: 36px 20px;
+  }
+
+  .journey-list::before {
+    left: 24px;
+  }
+
+  .journey-list {
+    gap: 18px;
+    padding-left: 0;
+  }
+
+  .journey-item-card {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .journey-item-card:nth-child(odd) .journey-content-col,
+  .journey-item-card:nth-child(even) .journey-content-col {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+  }
+
+  .journey-year-col {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 48px;
+  }
+
+  .journey-year {
+    padding: 7px 8px;
+    font-size: 0.85rem;
+  }
+
+  .journey-content-col {
+    padding: 18px 16px;
+  }
 }
