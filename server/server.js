@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
 import dns from 'node:dns';
+import multer from 'multer';
 
 // Fix for Windows DNS resolving issues with MongoDB Atlas SRV records
 try {
@@ -20,6 +21,39 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+const careerUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 10 * 1024 * 1024
+  },
+  fileFilter: (req, file, callback) => {
+    const allowedTypes = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
+
+    if (!allowedTypes.includes(file.mimetype)) {
+      return callback(new Error('Resume must be a PDF, DOC, or DOCX file.'));
+    }
+
+    callback(null, true);
+  }
+});
+
+const handleCareerUpload = (req, res, next) => {
+  careerUpload.single('resume')(req, res, (error) => {
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        error: error.message || 'Invalid resume upload.'
+      });
+    }
+
+    next();
+  });
+};
 
 // MongoDB Connection
 let isMongoConnected = false;
@@ -57,6 +91,22 @@ const contactSchema = new mongoose.Schema(
 );
 
 const ContactMessage = mongoose.model('ContactMessage', contactSchema);
+
+const careerApplicationSchema = new mongoose.Schema(
+  {
+    jobTitle: { type: String, required: true, trim: true },
+    department: { type: String, required: true, trim: true },
+    name: { type: String, required: true, trim: true },
+    email: { type: String, required: true, trim: true },
+    portfolio: { type: String, trim: true },
+    resumeFileName: { type: String, trim: true },
+    emailDelivered: { type: Boolean, default: false },
+    createdAt: { type: Date, default: Date.now }
+  },
+  { collection: 'careerApplications' }
+);
+
+const CareerApplication = mongoose.model('CareerApplication', careerApplicationSchema);
 
 // Nodemailer Transporter Setup
 const emailUser = process.env.EMAIL_USER?.trim() || 'dhruvishamaheta284@gmail.com';
@@ -100,6 +150,7 @@ app.post('/api/contact', async (req, res) => {
         success: false,
         error: 'Name, email, and message are all required.'
       });
+
     }
 
     // 1. Save to MongoDB Atlas if connected
@@ -192,6 +243,91 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// Career application endpoint - sends applicant details and resume to the admin mailbox
+app.post('/api/careers/apply', handleCareerUpload, async (req, res) => {
+  try {
+    const {
+      jobTitle,
+      department,
+      name,
+      email,
+      portfolio = '',
+      resumeNote = ''
+    } = req.body;
+
+    if (!jobTitle || !department || !name || !email || (!portfolio && !req.file)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Job, name, email, and either a portfolio URL or resume are required.'
+      });
+    }
+
+    let savedDoc = null;
+    if (isMongoConnected || mongoose.connection.readyState === 1) {
+      try {
+        savedDoc = await CareerApplication.create({
+          jobTitle,
+          department,
+          name,
+          email,
+          portfolio,
+          resumeFileName: req.file?.originalname,
+          emailDelivered: false
+        });
+        console.log(`Saved career application from ${name} to MongoDB Atlas.`);
+      } catch (dbErr) {
+        console.error('Failed to save career application to MongoDB:', dbErr.message);
+      }
+    }
+
+    const attachments = req.file
+      ? [{
+          filename: req.file.originalname,
+          content: req.file.buffer,
+          contentType: req.file.mimetype
+        }]
+      : [];
+    const mailOptions = {
+      from: `"Technoplus Careers" <${emailUser}>`,
+      to: receiverEmail,
+      replyTo: email,
+      subject: `New Job Application: ${jobTitle} - ${name}`,
+      text: [
+        `Job: ${jobTitle}`,
+        `Department: ${department}`,
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Portfolio: ${portfolio || 'Not provided'}`,
+        `Resume: ${req.file?.originalname || 'Not attached'}`,
+        '',
+        'Note:',
+        resumeNote || 'No note provided'
+      ].join('\n'),
+      attachments
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log(`Career application email successfully delivered to ${receiverEmail}`);
+
+    if (savedDoc) {
+      savedDoc.emailDelivered = true;
+      await savedDoc.save();
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Your application has been sent successfully.',
+      savedToDatabase: !!savedDoc
+    });
+  } catch (error) {
+    console.error('Error handling career application:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'An error occurred while sending your application. Please try again later.'
+    });
+  }
+});
+
 // Endpoint to view stored messages (admin utility)
 app.get('/api/messages', async (req, res) => {
   try {
@@ -208,6 +344,17 @@ app.get('/api/messages', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`TechnoPulse Backend Server running on port ${PORT}`);
+});
+
+server.on('error', (error) => {
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. The backend is likely already running. Stop the existing process or set a different PORT in server/.env.`);
+    process.exitCode = 1;
+    return;
+  }
+
+  console.error('Backend server startup failed:', error);
+  process.exitCode = 1;
 });

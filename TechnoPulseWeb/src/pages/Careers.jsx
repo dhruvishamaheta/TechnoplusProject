@@ -13,7 +13,9 @@ import {
   X,
   Mail,
   Send,
-  CheckCircle2
+  CheckCircle2,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 import './Careers.css';
 
@@ -21,11 +23,14 @@ export default function Careers() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedJob, setSelectedJob] = useState(null);
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const [applicationLoading, setApplicationLoading] = useState(false);
+  const [applicationError, setApplicationError] = useState('');
   const [applicantData, setApplicantData] = useState({
     name: '',
     email: '',
     portfolio: '',
-    resumeNote: ''
+    resumeNote: '',
+    resume: null
   });
 
   useEffect(() => {
@@ -188,14 +193,50 @@ export default function Careers() {
     ? jobs
     : jobs.filter(j => j.department === selectedCategory);
 
-  const handleApplySubmit = (e) => {
+  const handleApplySubmit = async (e) => {
     e.preventDefault();
-    setApplicationSubmitted(true);
-    setTimeout(() => {
-      setSelectedJob(null);
-      setApplicationSubmitted(false);
-      setApplicantData({ name: '', email: '', portfolio: '', resumeNote: '' });
-    }, 2500);
+    setApplicationError('');
+
+    if (!applicantData.portfolio && !applicantData.resume) {
+      setApplicationError('Please provide a portfolio URL or upload your resume.');
+      return;
+    }
+
+    setApplicationLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append('jobTitle', selectedJob.title);
+      formData.append('department', selectedJob.department);
+      formData.append('name', applicantData.name);
+      formData.append('email', applicantData.email);
+      formData.append('portfolio', applicantData.portfolio);
+      formData.append('resumeNote', applicantData.resumeNote);
+      if (applicantData.resume) {
+        formData.append('resume', applicantData.resume);
+      }
+
+      const endpoint = import.meta.env.VITE_API_BASE_URL
+        ? `${import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')}/api/careers/apply`
+        : '/api/careers/apply';
+      const response = await fetch(endpoint, { method: 'POST', body: formData });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send application. Please try again.');
+      }
+
+      setApplicationSubmitted(true);
+      setTimeout(() => {
+        setSelectedJob(null);
+        setApplicationSubmitted(false);
+        setApplicantData({ name: '', email: '', portfolio: '', resumeNote: '', resume: null });
+      }, 2500);
+    } catch (error) {
+      console.error('Career application submission error:', error);
+      setApplicationError(error.message || 'Unable to send application. Please try again.');
+    } finally {
+      setApplicationLoading(false);
+    }
   };
 
   return (
@@ -439,6 +480,13 @@ export default function Careers() {
 
                   <form onSubmit={handleApplySubmit} className="job-apply-form">
                     <h4 className="apply-form-title">Quick Application:</h4>
+
+                    {applicationError && (
+                      <div className="application-alert-box" role="alert">
+                        <AlertCircle size={18} />
+                        <span>{applicationError}</span>
+                      </div>
+                    )}
                     
                     <div className="apply-fields-grid">
                       <div className="form-field-group">
@@ -467,13 +515,22 @@ export default function Careers() {
                     </div>
 
                     <div className="form-field-group">
-                      <label className="form-field-label">Portfolio / LinkedIn / GitHub URL *</label>
+                      <label className="form-field-label">Portfolio / LinkedIn / GitHub URL</label>
                       <input
                         type="url"
-                        required
                         placeholder="https://github.com/yourhandle"
                         value={applicantData.portfolio}
                         onChange={(e) => setApplicantData({ ...applicantData, portfolio: e.target.value })}
+                        className="form-text-input"
+                      />
+                    </div>
+
+                    <div className="form-field-group">
+                      <label className="form-field-label">Resume (PDF, DOC, or DOCX; max 10 MB)</label>
+                      <input
+                        type="file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        onChange={(e) => setApplicantData({ ...applicantData, resume: e.target.files[0] || null })}
                         className="form-text-input"
                       />
                     </div>
@@ -489,9 +546,9 @@ export default function Careers() {
                       />
                     </div>
 
-                    <button type="submit" className="btn btn-primary submit-app-btn">
-                      <Send size={15} />
-                      <span>Submit Application</span>
+                    <button type="submit" className="btn btn-primary submit-app-btn" disabled={applicationLoading}>
+                      {applicationLoading ? <Loader2 size={15} className="spin-icon" /> : <Send size={15} />}
+                      <span>{applicationLoading ? 'Sending Application...' : 'Submit Application'}</span>
                     </button>
                   </form>
                 </>
