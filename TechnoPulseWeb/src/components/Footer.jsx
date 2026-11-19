@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Link to="/" className="footer-logo-link" aria-label="Technoplus Home">
               <img
-                src="/technoplus-logo.png"
+                src="/technoplus-logo-transparent.png"
                 alt="Technoplus Solutions"
                 className="footer-logo"
               />

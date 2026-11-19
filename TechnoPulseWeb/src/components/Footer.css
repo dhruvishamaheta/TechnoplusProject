@@ -45,8 +45,8 @@
   }
 
   .footer-logo {
-    width: 120px;
-    height: 64px;
+    width: 112px;
+    height: auto;
   }
 }
 
@@ -68,9 +68,11 @@
 }
 
 .footer-logo {
-  height: 76px;
-  width: 180px;
+  width: 132px;
+  height: auto;
   display: block;
+  background: transparent;
+  object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 245, 212, 0.2));
 }
 

@@ -8,9 +8,11 @@ import {
   Globe2, 
   CheckCircle, 
   ArrowRight,
+  ChevronDown,
   TrendingUp,
   Cpu
 } from 'lucide-react';
+import AboutHeroCanvas from '../components/AboutHeroCanvas';
 import './AboutUs.css';
 
 export default function AboutUs() {
@@ -54,18 +56,18 @@ export default function AboutUs() {
     <div className="about-page-wrap">
       {/* Hero Section */}
       <section className="about-hero-section">
+        <AboutHeroCanvas />
         <div className="container">
           <div className="about-hero-content">
-            <span className="badge">
+            <span className="about-hero-badge">
               <Award size={14} />
-              About Technoplus Solutions
+              About Technoplus
             </span>
             <h1 className="about-hero-title">
-              Engineering High-Performance Digital Systems for the Modern Enterprise
+              About <span>Technoplus</span>
             </h1>
             <p className="about-hero-desc">
-              Founded by passionate enterprise architects, Technoplus Solutions Private Limited transforms 
-              ambitious ideas into mission-critical web applications, cloud infrastructure, and intelligent automation platforms.
+              Innovating Digital Solutions &amp; Building the Future of Technology.
             </p>
 
             <div className="about-hero-actions">
@@ -79,10 +81,14 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
+        <a className="about-hero-scroll" href="#about-stats" aria-label="Scroll to company statistics">
+          <span>Scroll to explore</span>
+          <ChevronDown size={16} aria-hidden="true" />
+        </a>
       </section>
 
       {/* Stats Section */}
-      <section className="about-stats-section">
+      <section className="about-stats-section" id="about-stats">
         <div className="container">
           <div className="about-stats-grid">
             {stats.map((item, idx) => (

@@ -12,7 +12,9 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Terminal,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import './Home.css';
 
@@ -69,7 +71,8 @@ const HERO_BANNERS = [
 ];
 
 export default function Home() {
-  const [activeBannerIndex, setActiveBannerIndex] = useState(0);
+  const [activeBannerIndex, setActiveBannerIndex] = useState(2);
+  const [isBannerPaused, setIsBannerPaused] = useState(false);
   const processSteps = [
     {
       step: '01',
@@ -97,12 +100,16 @@ export default function Home() {
   const coreServices = servicesData.slice(0, 4);
 
   useEffect(() => {
+    if (isBannerPaused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return undefined;
+    }
+
     const bannerTimer = window.setInterval(() => {
       setActiveBannerIndex((currentIndex) => (currentIndex + 1) % HERO_BANNERS.length);
-    }, 3000);
+    }, 5200);
 
     return () => window.clearInterval(bannerTimer);
-  }, []);
+  }, [isBannerPaused]);
 
   useEffect(() => {
     const homeRoot = document.querySelector('.home-page-root');
@@ -138,42 +145,37 @@ export default function Home() {
   return (
     <div className="home-page-root">
       {/* =========================================================================
-          HERO SECTION - MINIMAL & ELEGANT
+        HERO SECTION - SPLIT SAAS SHOWCASE
           ========================================================================= */}
       <section className="hero-section">
-        {/* Subtle, calm ambient canvas wavefield */}
         <HeroAnimation />
 
         <div className="container hero-content-wrap">
           <div className="hero-text-container">
-            {/* Minimal Status Badge */}
             <div className="hero-badge">
               <span className="pulse-dot"></span>
               <span>Product engineering for ambitious teams</span>
             </div>
 
-            {/* Main Headline */}
             <h1 className="hero-main-title">
-              Build software your business can depend on.
+              Build software your business <span className="hero-gradient-text">can depend on.</span>
             </h1>
 
             <p className="hero-description">
               Technoplus helps growing companies turn complex ideas into reliable web products, intelligent workflows, and cloud platforms that are ready for what comes next.
             </p>
 
-            {/* Clean CTA Actions */}
             <div className="hero-cta-group">
-              <Link to="/services" className="btn btn-primary hero-btn-primary">
-                <span>Explore our services</span>
+              <Link to="/contact" className="btn btn-primary hero-btn-primary">
+                <span>Start a project</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link to="/contact" className="btn btn-secondary hero-btn-secondary">
-                <span>Start a conversation</span>
+              <Link to="/services" className="btn btn-secondary hero-btn-secondary">
+                <span>Explore our services</span>
                 <ArrowUpRight size={15} />
               </Link>
             </div>
 
-            {/* Minimal Trust Row */}
             <div className="hero-trust-row">
               <div className="hero-trust-item">
                 <CheckCircle2 size={14} className="trust-icon" />
@@ -189,13 +191,14 @@ export default function Home() {
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
       {/* =========================================================================
           KEY STATS ROW - MINIMALIST GLASS CARDS
           ========================================================================= */}
-      <section className="stats-section home-reveal">
+      <section className="stats-section home-reveal" aria-label="Technoplus delivery highlights">
         <div className="container">
           <div className="stats-grid">
             {DELIVERY_STATS.map((stat) => (
@@ -212,11 +215,11 @@ export default function Home() {
       {/* =========================================================================
           MINIMAL TECH STACK RIBBON
           ========================================================================= */}
-      <div className="marquee-section home-reveal">
+      <div className="marquee-section home-reveal" role="region" aria-label="Technologies we work with">
         <div className="marquee-outer-wrap">
           <div className="marquee-track">
             {[...TECH_STACK, ...TECH_STACK].map((tech, idx) => (
-              <div key={idx} className="marquee-item">
+              <div key={idx} className="marquee-item" aria-hidden={idx >= TECH_STACK.length}>
                 <span className="marquee-dot"></span>
                 <span>{tech}</span>
               </div>
@@ -230,7 +233,21 @@ export default function Home() {
           ========================================================================= */}
       <section className="home-banner-section home-reveal">
         <div className="container">
-          <div className="build-banner" aria-live="polite">
+          <div
+            className="build-banner"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Technoplus showcase"
+            aria-live={isBannerPaused ? 'polite' : 'off'}
+            onMouseEnter={() => setIsBannerPaused(true)}
+            onMouseLeave={() => setIsBannerPaused(false)}
+            onFocusCapture={() => setIsBannerPaused(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setIsBannerPaused(false);
+              }
+            }}
+          >
             <img
               key={HERO_BANNERS[activeBannerIndex].image}
               src={HERO_BANNERS[activeBannerIndex].image}
@@ -238,16 +255,38 @@ export default function Home() {
               className="hero-visual-image"
             />
             <div className="hero-visual-overlay">
-              <span>Technoplus infrastructure</span>
-              <strong>{HERO_BANNERS[activeBannerIndex].label}</strong>
-              <p>{HERO_BANNERS[activeBannerIndex].detail}</p>
-              <div className="hero-banner-progress" aria-hidden="true">
-                {HERO_BANNERS.map((banner, index) => (
-                  <span
-                    key={banner.label}
-                    className={index === activeBannerIndex ? 'is-active' : ''}
-                  />
-                ))}
+              <span className="hero-visual-eyebrow"><i></i> Technoplus infrastructure</span>
+              <strong className="hero-visual-title">{HERO_BANNERS[activeBannerIndex].label}</strong>
+              <p className="hero-visual-description">{HERO_BANNERS[activeBannerIndex].detail}</p>
+              <div className="hero-banner-controls">
+                <div className="hero-banner-progress" aria-label="Choose a showcase">
+                  {HERO_BANNERS.map((banner, index) => (
+                    <button
+                      key={banner.label}
+                      type="button"
+                      className={`hero-banner-dot${index === activeBannerIndex ? ' is-active' : ''}`}
+                      aria-label={`Show ${banner.label}`}
+                      aria-current={index === activeBannerIndex ? 'true' : undefined}
+                      onClick={() => setActiveBannerIndex(index)}
+                    />
+                  ))}
+                </div>
+                <div className="hero-banner-arrows">
+                  <button
+                    type="button"
+                    aria-label="Previous showcase"
+                    onClick={() => setActiveBannerIndex((currentIndex) => (currentIndex - 1 + HERO_BANNERS.length) % HERO_BANNERS.length)}
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next showcase"
+                    onClick={() => setActiveBannerIndex((currentIndex) => (currentIndex + 1) % HERO_BANNERS.length)}
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -345,19 +384,22 @@ export default function Home() {
       <section className="home-cta-section home-reveal">
         <div className="container">
           <div className="home-cta-box">
-            <h2 className="home-cta-title">Ready to build what is next?</h2>
-            <p className="home-cta-desc">
-              Tell us what you are solving. We will help you clarify the opportunity, identify the right next step, and build a practical plan.
-            </p>
-            <div className="home-cta-actions">
-              <Link to="/contact" className="btn btn-primary home-cta-btn">
-                <span>Discuss your project</span>
-                <ArrowRight size={15} />
-              </Link>
-              <Link to="/projects" className="btn btn-secondary home-cta-btn">
-                <span>See our work</span>
-                <ArrowUpRight size={15} />
-              </Link>
+            <div className="home-cta-content">
+              <span className="home-cta-eyebrow"><Sparkles size={14} /> Build with Technoplus</span>
+              <h2 className="home-cta-title">Ready to build what is next?</h2>
+              <p className="home-cta-desc">
+                Tell us what you are solving. We will help you clarify the opportunity, identify the right next step, and build a practical plan.
+              </p>
+              <div className="home-cta-actions">
+                <Link to="/contact" className="btn btn-primary home-cta-btn">
+                  <span>Discuss your project</span>
+                  <ArrowRight size={15} />
+                </Link>
+                <Link to="/projects" className="btn btn-secondary home-cta-btn">
+                  <span>See our work</span>
+                  <ArrowUpRight size={15} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
